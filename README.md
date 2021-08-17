@@ -1,14 +1,14 @@
 - [X] (0:00:00​) intro
-- [ ] (0:03:35​) django project setup part 1
-- [ ] (0:09:56​) django project setup part 2
-- [ ] (0:15:11​) django project setup part 3
-- [ ] (0:25:21​) customer model
-- [ ] (0:30:49​) product model
-- [ ] (0:36:30​) profile model + post_save signal
-- [ ] (0:48:14​) sale model
-- [ ] (1:12:05​) m2m_changed signal
-- [ ] (1:19:15​) reports model
-- [ ] (1:24:14​) first view and template
+- [X] (0:03:35​) django project setup part 1
+- [X] (0:09:56​) django project setup part 2
+- [X] (0:15:11​) django project setup part 3
+- [X] (0:25:21​) customer model
+- [X] (0:30:49​) product model
+- [X] (0:36:30​) profile model + post_save signal
+- [X] (0:48:14​) sale model
+- [X] (1:12:05​) m2m_changed signal
+- [X] (1:19:15​) reports model
+- [X] (1:24:14​) first view and template
 - [ ] (1:33:25​) working on the sales list
 - [ ] (1:39:58​) navigating to the detail page
 - [ ] (1:49:27​) creating the search form
