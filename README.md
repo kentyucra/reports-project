@@ -1,4 +1,4 @@
-- [ ] (0:00:00​) intro
+- [X] (0:00:00​) intro
 - [ ] (0:03:35​) django project setup part 1
 - [ ] (0:09:56​) django project setup part 2
 - [ ] (0:15:11​) django project setup part 3
