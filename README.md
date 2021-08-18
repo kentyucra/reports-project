@@ -11,7 +11,7 @@
 - [X] (1:24:14​) first view and template
 - [X] (1:33:25​) working on the sales list
 - [X] (1:39:58​) navigating to the detail page
-- [ ] (1:49:27​) creating the search form
+- [X] (1:49:27​) creating the search form
 - [ ] (1:58:15​) get the data from the search form
 - [ ] (2:01:08​) first querysets and dataframes
 - [ ] (2:17:05​) display dataframes in the templates
