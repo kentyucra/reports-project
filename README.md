@@ -1,27 +1,27 @@
-- [ ] (0:00:00​) intro
-- [ ] (0:03:35​) django project setup part 1
-- [ ] (0:09:56​) django project setup part 2
-- [ ] (0:15:11​) django project setup part 3
-- [ ] (0:25:21​) customer model
-- [ ] (0:30:49​) product model
-- [ ] (0:36:30​) profile model + post_save signal
-- [ ] (0:48:14​) sale model
-- [ ] (1:12:05​) m2m_changed signal
-- [ ] (1:19:15​) reports model
-- [ ] (1:24:14​) first view and template
-- [ ] (1:33:25​) working on the sales list
-- [ ] (1:39:58​) navigating to the detail page
-- [ ] (1:49:27​) creating the search form
-- [ ] (1:58:15​) get the data from the search form
-- [ ] (2:01:08​) first querysets and dataframes
-- [ ] (2:17:05​) display dataframes in the templates
-- [ ] (2:24:04​) dataframe for the positions
-- [ ] (2:32:47​) get the sales id for position objects
-- [ ] (2:38:00​) the apply function
-- [ ] (2:49:01​) merge dataframes
-- [ ] (2:54:57​) perform groupby
-- [ ] (2:58:12​) working on the charts part 1
-- [ ] (3:02:58​) working on the charts part 2
+- [X] (0:00:00​) intro
+- [X] (0:03:35​) django project setup part 1
+- [X] (0:09:56​) django project setup part 2
+- [X] (0:15:11​) django project setup part 3
+- [X] (0:25:21​) customer model
+- [X] (0:30:49​) product model
+- [X] (0:36:30​) profile model + post_save signal
+- [X] (0:48:14​) sale model
+- [X] (1:12:05​) m2m_changed signal
+- [X] (1:19:15​) reports model
+- [X] (1:24:14​) first view and template
+- [X] (1:33:25​) working on the sales list
+- [X] (1:39:58​) navigating to the detail page
+- [X] (1:49:27​) creating the search form
+- [X] (1:58:15​) get the data from the search form
+- [X] (2:01:08​) first querysets and dataframes
+- [X] (2:17:05​) display dataframes in the templates
+- [X] (2:24:04​) dataframe for the positions
+- [X] (2:32:47​) get the sales id for position objects
+- [X] (2:38:00​) the apply function
+- [X] (2:49:01​) merge dataframes
+- [X] (2:54:57​) perform groupby
+- [X] (2:58:12​) working on the charts part 1
+- [X] (3:02:58​) working on the charts part 2
 - [ ] (3:17:18​) hello world from the console
 - [ ] (3:21:29​) adding the modal 
 - [ ] (3:29:04​) add the report form to the modal 
