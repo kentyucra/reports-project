@@ -1,14 +1,108 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import Sale
+from .forms import SalesSearchForm
+import pandas as pd
+from .utils import (
+    get_customer_name_from,
+    get_salesman_name_from,
+    get_chart
+)
 # Create your views here.
 
 
 def home_view(request):
-    hello = "Hello world from the view"
-    return render(request, 'sales/home.html', {'hello': hello})
+    form = SalesSearchForm(request.POST or None)
+    sales_df = None
+    positions_df = None
+    merged_df = None
+    df = None
+
+    chart = None
+
+    if request.method == 'POST':
+        date_from = request.POST.get('date_from')
+        date_to = request.POST.get('date_to')
+        chart_type = request.POST.get('chart_type')
+
+        sale_qs = Sale.objects.filter(
+            created__date__gte=date_from,  # gte = greater than equal
+            created__date__lte=date_to,  # lte = less than equal
+        )
+
+        if len(sale_qs) > 0:
+            sales_df = pd.DataFrame(sale_qs.values())
+
+            sales_df['customer_id'] = sales_df['customer_id'].apply(
+                get_customer_name_from
+            )
+            sales_df['salesman_id'] = sales_df['salesman_id'].apply(
+                get_salesman_name_from
+            )
+            sales_df['created'] = sales_df['created'].apply(
+                lambda x: x.strftime("%Y - %m - %d")
+            )
+            sales_df['updated'] = sales_df['updated'].apply(
+                lambda x: x.strftime("%Y - %m - %d")
+            )
+
+            sales_df.rename(
+                {'customer_id': 'customer',
+                 'salesman_id': 'salesman',
+                 'id': 'sales_id'},
+                axis=1,
+                inplace=True
+            )
+
+            position_data = []
+
+            for sale in sale_qs:
+                for position in sale.positions.all():
+                    obj = {
+                        'position_id': position.id,
+                        'product': position.product.name,
+                        'quantity': position.quantity,
+                        'price': position.price,
+                        'sales_id': position.get_sales_id(),
+                    }
+                    position_data.append(obj)
+
+            positions_df = pd.DataFrame(position_data)
+            merged_df = pd.merge(sales_df, positions_df, on='sales_id')
+
+            df = merged_df.groupby('transaction_id', as_index=False)[
+                'price'].agg('sum')
+
+            chart = get_chart(
+                chart_type,
+                df,
+                labels=df['transaction_id'].values
+            )
+            print('chart', chart)
+
+            positions_df = positions_df.to_html()
+            sales_df = sales_df.to_html()
+            merged_df = merged_df.to_html()
+            df = df.to_html()
+        else:
+            print("No data")
+
+    context = {
+        'form': form,
+        'sales_df': sales_df,
+        'positions_df': positions_df,
+        'merged_df': merged_df,
+        'df': df,
+        'chart': chart,
+    }
+    return render(request, 'sales/home.html', context)
 
 
 class SaleListView(ListView):
     model = Sale
     template_name = 'sales/main.html'
+
+
+class SaleDetailView(DetailView):
+    model = Sale
+    template_name = "sales/detail.html"
