@@ -7,6 +7,11 @@ CHART_CHOICES = (
     ('#3', 'Line chart'),
 )
 
+RESULT_CHOICES = (
+    ('#1', 'Transaction ID'),
+    ('#2', 'Sales Date')
+)
+
 
 class SalesSearchForm(forms.Form):
     date_from = forms.DateField(
@@ -16,3 +21,4 @@ class SalesSearchForm(forms.Form):
         widget=forms.DateInput(attrs={'type': 'date'})
     )
     chart_type = forms.ChoiceField(choices=CHART_CHOICES)
+    results_by = forms.ChoiceField(choices=RESULT_CHOICES)

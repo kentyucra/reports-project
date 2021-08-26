@@ -23,6 +23,11 @@ class Position(models.Model):
         sale_obj = self.sale_set.first()
         return sale_obj.id
 
+    def get_sales_customer(self):
+        # Reverse relationship
+        sale_obj = self.sale_set.first()
+        return sale_obj.customer.name
+
     def __str__(self):
         return f"id: {self.id}, product: {self.product.name}, quantity: {self.quantity}"
 
@@ -54,8 +59,8 @@ class Sale(models.Model):
 
 
 class CSV(models.Model):
-    file_name = models.FileField(upload_to='csvs')
-    activated = models.BooleanField(default=False)
+    file_name = models.CharField(max_length=120, null=True)
+    csv_file = models.FileField(upload_to='csvs', null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
